@@ -31,9 +31,9 @@ namespace Entities.Entidades
 
         public bool DespesaAntrasada { get; set; }
 
-        [ForeignKey("Categoria")]
+        [ForeignKey("Perfil")]
         [Column(Order = 1)]
-        public int IdCategoria { get; set; }
+        public int IdPerfil { get; set; }
         //public virtual Categoria Categoria { get; set; }
     }
 }

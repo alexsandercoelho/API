@@ -1,7 +1,7 @@
 using Domain.Interfaces.Generics;
-using Domain.Interfaces.ICategoria;
 using Domain.Interfaces.IDespesa;
 using Domain.Interfaces.InterfaceServicos;
+using Domain.Interfaces.IPerfil;
 using Domain.Interfaces.ISistema;
 using Domain.Interfaces.IUsuarioSistema;
 using Domain.Servicos;
@@ -38,14 +38,14 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 // INTERFACE E REPOSITORIO
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositoryGenerics<>));
-builder.Services.AddSingleton<InterfaceCategoria, RepositorioCategoria>();
+builder.Services.AddSingleton<InterfacePerfil, RepositorioPerfil>();
 builder.Services.AddSingleton<InterfaceDespesa, RepositorioDespesa>();
 builder.Services.AddSingleton<InterfaceSistema, RepositorioSistema>();
 builder.Services.AddSingleton<InterfaceUsuarioSistema, RepositorioUsuarioSistema>();
 
 
 // SERVIÇO DOMINIO
-builder.Services.AddSingleton<ICategoriaServico, CategoriaServico>();
+builder.Services.AddSingleton<IPerfilServico, PerfilServico>();
 builder.Services.AddSingleton<IDespesaServico, DespesaServico>();
 builder.Services.AddSingleton<ISistemaServico, SistemaServico>();
 builder.Services.AddSingleton<IUsuarioSistemaServico, UsuarioSistemaServico>();

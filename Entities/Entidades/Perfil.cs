@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace Entities.Entidades
 {
 
-    [Table("Categoria")]
-    public class Categoria : Base
+    [Table("Perfil")]
+    public class Perfil : Base
     {
         [ForeignKey("Sistema")]
         [Column(Order = 1)]

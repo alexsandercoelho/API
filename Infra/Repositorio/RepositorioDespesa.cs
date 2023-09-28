@@ -28,9 +28,9 @@ namespace Infra.Repositorio
             {
                 return await
                    (from s in banco.Sistema
-                    join c in banco.Categoria on s.Id equals c.IdSistema
+                    join c in banco.Perfil on s.Id equals c.IdSistema
                     join us in banco.UsuarioSistema on s.Id equals us.IdSistema
-                    join d in banco.Despesa on c.Id equals d.IdCategoria
+                    join d in banco.Despesa on c.Id equals d.IdPerfil
                     where us.EmailUsuario.Equals(emailUsuario) && s.Mes == d.Mes && s.Ano == d.Ano
                     select d).AsNoTracking().ToListAsync();
             }
@@ -42,9 +42,9 @@ namespace Infra.Repositorio
             {
                 return await
                    (from s in banco.Sistema
-                    join c in banco.Categoria on s.Id equals c.IdSistema
+                    join c in banco.Perfil on s.Id equals c.IdSistema
                     join us in banco.UsuarioSistema on s.Id equals us.IdSistema
-                    join d in banco.Despesa on c.Id equals d.IdCategoria
+                    join d in banco.Despesa on c.Id equals d.IdPerfil
                     where us.EmailUsuario.Equals(emailUsuario) && d.Mes < DateTime.Now.Month && !d.Pago
                     select d).AsNoTracking().ToListAsync();
             }

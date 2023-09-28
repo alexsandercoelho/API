@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.ICategoria
+namespace Domain.Interfaces.IPerfil
 {
-    public interface InterfaceCategoria : InterfaceGeneric<Categoria>
+    public interface InterfacePerfil : InterfaceGeneric<Perfil>
     {
-        Task<IList<Categoria>> ListarCategoriasUsuario(string emailUsuario);
+        Task<IList<Perfil>> ListarPerfilUsuario(string emailUsuario);
     }
 }

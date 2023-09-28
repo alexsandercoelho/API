@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.ICategoria;
+﻿using Domain.Interfaces.IPerfil;
 using Domain.Interfaces.IDespesa;
 using Domain.Interfaces.InterfaceServicos;
 using Domain.Servicos;

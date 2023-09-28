@@ -17,7 +17,7 @@ namespace Infra.Configuracao
 
         public DbSet<Sistema> Sistema { set; get; }
         public DbSet<UsuarioSistema> UsuarioSistema { set; get; }
-        public DbSet<Categoria> Categoria { set; get; }
+        public DbSet<Perfil> Perfil { set; get; }
         public DbSet<Despesa> Despesa { set; get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
