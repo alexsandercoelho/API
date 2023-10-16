@@ -1,6 +1,7 @@
 ﻿using Entities.Entidades;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,10 @@ namespace Infra.Configuracao
 {
     public class ContextBase : IdentityDbContext<ApplicationUser>
     {
-        public ContextBase( DbContextOptions options) : base(options)
+        private IConfiguration _configuration { get; set; }
+        public ContextBase(DbContextOptions options, IConfiguration configuration) : base(options)
         {
+            _configuration = configuration; 
         }
 
         public DbSet<Sistema> Sistema { set; get; }
@@ -24,12 +27,10 @@ namespace Infra.Configuracao
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(ObterStringConexao());
+                optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
                 base.OnConfiguring(optionsBuilder);
             }
         }
-
-
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -37,15 +38,5 @@ namespace Infra.Configuracao
 
             base.OnModelCreating(builder);
         }
-
-
-        public string ObterStringConexao()
-        {
-            return "Data Source=LEGION5R7;Initial Catalog=AP2;Integrated Security=False;User ID=sa;Password=1234;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-
-            
-        }
-
-
     }
 }

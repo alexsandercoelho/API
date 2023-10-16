@@ -18,33 +18,16 @@ namespace Domain.Servicos
             _interfaceSistema = interfaceSistema;
         }
 
-        public async Task AdicionarSistema(Sistema sistema)
-        {
-             var valido = sistema.ValidarPropriedadeString(sistema.Nome, "Nome");
-
-            if(valido)
-            {
-                var data = DateTime.Now;
-
-                sistema.DiaFechamento = 1;
-                sistema.Ano = data.Year;
-                sistema.Mes = data.Month;
-                sistema.AnoCopia = data.Year;
-                sistema.MesCopia = data.Month;
-                sistema.GerarCopiaDespesa = true;
-
-                await _interfaceSistema.Add(sistema);
-            }
-        }
-
-        public async Task AtualizarSistema(Sistema sistema)
+        public async Task Salvar(Sistema sistema)
         {
             var valido = sistema.ValidarPropriedadeString(sistema.Nome, "Nome");
 
-            if (valido)
+            if(valido)
             {
-                sistema.DiaFechamento = 1;
-                await _interfaceSistema.Update(sistema);
+                if (sistema.Id != 0 || string.IsNullOrWhiteSpace(sistema.Id.ToString()))
+                    await _interfaceSistema.Update(sistema);
+                else
+                    await _interfaceSistema.Add(sistema);
             }
         }
     }

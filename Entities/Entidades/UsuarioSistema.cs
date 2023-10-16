@@ -12,7 +12,7 @@ namespace Entities.Entidades
     public class UsuarioSistema
     {
         public int Id { get; set; }
-        public string EmailUsuario { get; set; }
+        public string Email { get; set; }
         public bool Administrador { get; set; }
         public bool SistemaAtual { get; set; }
 

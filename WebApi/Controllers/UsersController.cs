@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Text;
 using WebApi.Models;
 
@@ -24,8 +25,10 @@ namespace WebApi.Controllers
         }
 
         [AllowAnonymous]
-        [Produces("application/json")]
-        [HttpPost("/api/AdicionaUsuario")]
+        [HttpPost]
+        [Route("new")]
+        [SwaggerOperation(Summary = "Etapa de Entrada", Description = "Etapa de entrada")]
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(IActionResult), Description = "Ok-200")]
 
         public async Task<IActionResult> AdicionaUsuario([FromBody] Login login)
         {

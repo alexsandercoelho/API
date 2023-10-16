@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.ISistema
 {
-    public interface InterfaceSistema : InterfaceGeneric<Sistema>
+    public interface InterfaceSistema : IInterfaceGeneric<Sistema>
     {
-        Task<IList<Sistema>> ListaSistemasUsuario(string emailUsuario);
+        Task<IList<Sistema>> ListaSistemas();
+        Task<IList<Sistema>> ListaSistemasPorUsuario(string emailUsuario);
     }
 }

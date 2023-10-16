@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.Generics
 {
-    public interface InterfaceGeneric<T> where T : class
+    public interface IInterfaceGeneric<T> where T : class
     {
         Task Add(T Objeto);
         Task Update(T Objeto);

@@ -3,6 +3,7 @@ using Entities.Entidades;
 using Infra.Configuracao;
 using Infra.Repositorio.Generics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +14,28 @@ namespace Infra.Repositorio
 {
     public class RepositorioSistema : RepositoryGenerics<Sistema>, InterfaceSistema
     {
-
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
+        private readonly IConfiguration _configuration;
 
-        public RepositorioSistema()
+        public RepositorioSistema(IConfiguration configuration)
         {
+            _configuration = configuration;
             _OptionsBuilder = new DbContextOptions<ContextBase>();
         }
 
-        public async Task<IList<Sistema>> ListaSistemasUsuario(string emailUsuario)
+        public async Task<IList<Sistema>> ListaSistemas()
         {
-            using (var banco = new ContextBase(_OptionsBuilder))
+            using (var context = new ContextBase(_OptionsBuilder, _configuration))
             {
-                return await
-                   (from s in banco.Sistema
-                    join us in banco.UsuarioSistema on s.Id equals us.IdSistema                   
-                    where us.EmailUsuario.Equals(emailUsuario) 
-                    select s).AsNoTracking().ToListAsync();
+                return await context.Sistema.ToListAsync();
+            }
+        }
+
+        public async Task<IList<Sistema>> ListaSistemasPorUsuario(string emailUsuario)
+        {
+            using (var context = new ContextBase(_OptionsBuilder, _configuration))
+            {
+                return await context.Sistema.Include(s => s.Usuarios.Where(w => w.Email == emailUsuario)).ToListAsync();
             }
         }
     }

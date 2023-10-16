@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.IPerfil
 {
-    public interface InterfacePerfil : InterfaceGeneric<Perfil>
+    public interface InterfacePerfil : IInterfaceGeneric<Perfil>
     {
         Task<IList<Perfil>> ListarPerfilUsuario(string emailUsuario);
     }

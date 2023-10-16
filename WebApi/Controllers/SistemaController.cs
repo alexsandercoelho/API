@@ -9,7 +9,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [AllowAnonymous]
     public class SistemaController : ControllerBase
     {
         private readonly InterfaceSistema _InterfaceSistema;
@@ -21,14 +21,28 @@ namespace WebApi.Controllers
             _ISistemaServico = ISistemaServico;
         }
 
-        [HttpGet("/api/ListaSistemasUsuario")]
+        [HttpGet("listar")]
         [Produces("application/json")]
-        public async Task<object> ListaSistemasUsuario(string emailUsuario)
+        public async Task<object> ListaSistemas()
         {
-            return await _InterfaceSistema.ListaSistemasUsuario(emailUsuario);
+            return await _InterfaceSistema.ListaSistemas();
         }
 
-        [HttpPost("/api/AdicionarSistema")]
+        [HttpGet("listar/{email}")]
+        [Produces("application/json")]
+        public async Task<object> ListaSistemasPorUsuario([FromQuery]string email)
+        {
+            return await _InterfaceSistema.ListaSistemasPorUsuario(email);
+        }
+
+        [HttpGet("listar/{id}")]
+        [Produces("application/json")]
+        public async Task<object> ListarSistemasPorId([FromQuery] int id)
+        {
+            return await _InterfaceSistema.GetEntityById(id);
+        }
+
+        [HttpPost("salvar")]
         [Produces("application/json")]
         public async Task<object> AdicionarSistema(Sistema sistema)
         {
@@ -37,25 +51,7 @@ namespace WebApi.Controllers
             return sistema;
         }
 
-        [HttpPut("/api/AtualizarSistema")]
-        [Produces("application/json")]
-        public async Task<object> AtualizarSistema(Sistema sistema)
-        {
-            await _ISistemaServico.AtualizarSistema(sistema);
-
-            return Task.FromResult(sistema);
-        }
-
-
-        [HttpGet("/api/ObterSistema")]
-        [Produces("application/json")]
-        public async Task<object> ObterSistema(int id)
-        {
-            return await _InterfaceSistema.GetEntityById(id);
-        }
-
-
-        [HttpDelete("/api/DeleteSistema")]
+        [HttpDelete("deletar")]
         [Produces("application/json")]
         public async Task<object> DeleteSistema(int id)
         {

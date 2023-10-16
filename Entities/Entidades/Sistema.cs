@@ -18,5 +18,6 @@ namespace Entities.Entidades
         public int MesCopia { get; set; }
         public int AnoCopia { get; set; }
 
+        public List<UsuarioSistema> Usuarios { get; set; }
     }
 }

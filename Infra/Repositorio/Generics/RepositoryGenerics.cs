@@ -1,6 +1,7 @@
 ﻿using Domain.Interfaces.Generics;
 using Infra.Configuracao;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
@@ -12,19 +13,24 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infra.Repositorio.Generics
 {
-    public class RepositoryGenerics<T> : InterfaceGeneric<T> , IDisposable where T : class
+    public class RepositoryGenerics<T> : IInterfaceGeneric<T> , IDisposable where T : class
     {
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
+        private readonly IConfiguration _configuration;
 
 
         public RepositoryGenerics()
         {
             _OptionsBuilder = new DbContextOptions<ContextBase>();
         }
+        public RepositoryGenerics(IConfiguration configuration) : base()
+        {
+            _configuration = configuration;
+        }
 
         public async Task Add(T Objeto)
         {
-            using (var data = new ContextBase(_OptionsBuilder))
+            using (var data = new ContextBase(_OptionsBuilder, _configuration))
             {
                 await data.Set<T>().AddAsync(Objeto);
                 await data.SaveChangesAsync();
@@ -33,7 +39,7 @@ namespace Infra.Repositorio.Generics
 
         public async Task Delete(T Objeto)
         {
-            using (var data = new ContextBase(_OptionsBuilder))
+            using (var data = new ContextBase(_OptionsBuilder, _configuration))
             {
                 data.Set<T>().Remove(Objeto);
                 await data.SaveChangesAsync();
@@ -42,7 +48,7 @@ namespace Infra.Repositorio.Generics
 
         public async Task<T> GetEntityById(int Id)
         {
-            using (var data = new ContextBase(_OptionsBuilder))
+            using (var data = new ContextBase(_OptionsBuilder, _configuration))
             {
                 return await data.Set<T>().FindAsync(Id);
             }
@@ -50,7 +56,7 @@ namespace Infra.Repositorio.Generics
 
         public async Task<List<T>> List()
         {
-            using (var data = new ContextBase(_OptionsBuilder))
+            using (var data = new ContextBase(_OptionsBuilder, _configuration))
             {
                 return await data.Set<T>().ToListAsync();
             }
@@ -58,7 +64,7 @@ namespace Infra.Repositorio.Generics
 
         public async Task Update(T Objeto)
         {
-            using (var data = new ContextBase(_OptionsBuilder))
+            using (var data = new ContextBase(_OptionsBuilder, _configuration))
             {
                 data.Set<T>().Update(Objeto);
                 await data.SaveChangesAsync();

@@ -39,7 +39,7 @@ namespace WebApi.Controllers
                    new UsuarioSistema
                    {
                        IdSistema = idSistema,
-                       EmailUsuario = emailUsuario,
+                       Email = emailUsuario,
                        Administrador = false,
                        SistemaAtual = true
                    });

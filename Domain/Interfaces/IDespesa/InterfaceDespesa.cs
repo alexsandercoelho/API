@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.IDespesa
 {
-    public interface InterfaceDespesa : InterfaceGeneric<Despesa>
+    public interface InterfaceDespesa : IInterfaceGeneric<Despesa>
     {
         Task<IList<Despesa>> ListarDespesasUsuario(string emailUsuario);
 

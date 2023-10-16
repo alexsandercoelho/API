@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.IUsuarioSistema
 {
-    public interface InterfaceUsuarioSistema : InterfaceGeneric<UsuarioSistema>
+    public interface InterfaceUsuarioSistema : IInterfaceGeneric<UsuarioSistema>
     {
         Task<IList<UsuarioSistema>> ListarUsuariosSistema(int IdSistema);
 
