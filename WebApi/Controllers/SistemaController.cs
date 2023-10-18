@@ -1,5 +1,4 @@
-﻿using Domain.Interfaces.InterfaceServicos;
-using Domain.Interfaces.ISistema;
+﻿using Domain.Interfaces;
 using Entities.Entidades;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

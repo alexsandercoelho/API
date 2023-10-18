@@ -1,5 +1,4 @@
-﻿using Domain.Interfaces.IPerfil;
-using Domain.Interfaces.InterfaceServicos;
+﻿using Domain.Interfaces;
 using Entities.Entidades;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -14,10 +13,10 @@ namespace WebApi.Controllers
     public class PerfilController : ControllerBase
     {
 
-        private readonly InterfacePerfil _InterfacePerfil;
-        private readonly IPerfilServico _IPerfilServico;
+        private readonly IPerfil _InterfacePerfil;
+        private readonly IPerfil _IPerfilServico;
 
-        public PerfilController(InterfacePerfil InterfacePerfil, IPerfilServico IPerfilServico)
+        public PerfilController(IPerfil InterfacePerfil, IPerfil IPerfilServico)
         {
             _InterfacePerfil = InterfacePerfil;
             _IPerfilServico = IPerfilServico;

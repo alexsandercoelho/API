@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.IDespesa
+namespace Domain.Interfaces
 {
-    public interface InterfaceDespesa : InterfaceGeneric<Despesa>
+    public interface IGrupo : InterfaceGeneric<Despesa>
     {
         Task<IList<Despesa>> ListarDespesasUsuario(string emailUsuario);
 

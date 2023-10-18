@@ -1,5 +1,4 @@
-﻿using Domain.Interfaces.InterfaceServicos;
-using Domain.Interfaces.IUsuarioSistema;
+﻿using Domain.Interfaces;
 using Entities.Entidades;
 using System;
 using System.Collections.Generic;

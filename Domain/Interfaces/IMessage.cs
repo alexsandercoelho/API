@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Enums
+namespace Domain.Interfaces
 {
-    public enum EnumTipoDespesa
+    internal class IMessage
     {
-        Contas = 1,
-        Investimento = 2
     }
 }

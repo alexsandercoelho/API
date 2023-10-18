@@ -1,9 +1,5 @@
 using Domain.Interfaces.Generics;
-using Domain.Interfaces.IDespesa;
-using Domain.Interfaces.InterfaceServicos;
-using Domain.Interfaces.IPerfil;
-using Domain.Interfaces.ISistema;
-using Domain.Interfaces.IUsuarioSistema;
+using Domain.Interfaces.IRegra;
 using Domain.Servicos;
 using Entities.Entidades;
 using Infra.Configuracao;
@@ -13,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.Token;
+using Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,14 +35,23 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 // INTERFACE E REPOSITORIO
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositoryGenerics<>));
-builder.Services.AddSingleton<InterfacePerfil, RepositorioPerfil>();
-builder.Services.AddSingleton<InterfaceDespesa, RepositorioDespesa>();
+builder.Services.AddSingleton<IGrupo, RepositorioGrupo>();
+builder.Services.AddSingleton<IPerfil, RepositorioPerfil>();
+builder.Services.AddSingleton<InterfacePessoa, RepositorioPessoa>();
+builder.Services.AddSingleton<InterfaceRegra, RepositorioRegra>();
+builder.Services.AddSingleton<IVersao, RepositorioVersao>();
+
+
 builder.Services.AddSingleton<InterfaceSistema, RepositorioSistema>();
 builder.Services.AddSingleton<InterfaceUsuarioSistema, RepositorioUsuarioSistema>();
 
 
 // SERVIÇO DOMINIO
-builder.Services.AddSingleton<IPerfilServico, PerfilServico>();
+builder.Services.AddSingleton<IGrupoServico, GrupoServico>();
+builder.Services.AddSingleton<IPerfil, PerfilServico>();
+builder.Services.AddSingleton<IPessoaServico, PessoaServico>();
+builder.Services.AddSingleton<IRegraServico, RegraServico>();
+builder.Services.AddSingleton<IVersaoServico, VersaoServico>();
 builder.Services.AddSingleton<IDespesaServico, DespesaServico>();
 builder.Services.AddSingleton<ISistemaServico, SistemaServico>();
 builder.Services.AddSingleton<IUsuarioSistemaServico, UsuarioSistemaServico>();

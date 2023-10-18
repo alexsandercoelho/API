@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.IUsuarioSistema
+namespace Domain.Interfaces
 {
     public interface InterfaceUsuarioSistema : InterfaceGeneric<UsuarioSistema>
     {

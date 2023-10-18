@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces.InterfaceServicos
+namespace Domain.Interfaces
 {
     public interface ISistemaServico
     {

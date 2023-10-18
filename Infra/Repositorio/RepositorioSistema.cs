@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.ISistema;
+﻿using Domain.Interfaces;
 using Entities.Entidades;
 using Infra.Configuracao;
 using Infra.Repositorio.Generics;

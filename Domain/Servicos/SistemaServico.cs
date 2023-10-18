@@ -1,5 +1,4 @@
-﻿using Domain.Interfaces.InterfaceServicos;
-using Domain.Interfaces.ISistema;
+﻿using Domain.Interfaces;
 using Entities.Entidades;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Servicos
 {
-    public  class SistemaServico : ISistemaServico
+    public class SistemaServico : ISistemaServico
     {
         private readonly InterfaceSistema _interfaceSistema;
 
@@ -20,9 +19,9 @@ namespace Domain.Servicos
 
         public async Task AdicionarSistema(Sistema sistema)
         {
-             var valido = sistema.ValidarPropriedadeString(sistema.Nome, "Nome");
+            var valido = sistema.ValidarPropriedadeString(sistema.Nome, "Nome");
 
-            if(valido)
+            if (valido)
             {
                 var data = DateTime.Now;
 
