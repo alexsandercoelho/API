@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace Domain.Servicos
 {
-    public class PerfilServico : IPerfil
+    public class RegraServico : IRegra
     {
 
-        private readonly IPerfil _interfacePerfil;
-        public PerfilServico(IPerfil interfacePerfil)
+        private readonly IRegra _interfaceRegra;
+        public RegraServico(IRegra interfaceRegra)
         {
-            _interfacePerfil = interfacePerfil;
+            _interfaceRegra = interfaceRegra;
         }
 
-        public async Task AdicionarPerfil(Perfil perfil)
+        public async Task AdicionarRegra(Regra regra)
         {
-            var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
+            var valido = regra.ValidarPropriedadeString(regra.Nome, "Nome");
             if (valido)
-                await _interfacePerfil.Add(perfil);
+                await _interfaceRegra.AdicionarRegra(regra);
         }
 
-        public async Task AtualizarPerfil(Perfil perfil)
+        public async Task AtualizarRegra(Regra regra)
         {
-            var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
+            var valido = regra.ValidarPropriedadeString(regra.Nome, "Nome");
             if (valido)
-                await _interfacePerfil.Update(perfil);
+                await _interfaceRegra.AlterarRegra(regra);
         }
     }
 }

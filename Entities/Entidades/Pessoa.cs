@@ -10,30 +10,13 @@ namespace Entities.Entidades
 {
 
     [Table("Pessoa")]
-    public  class Pessoa : Base
+    public  class Pessoa
     {
 
-        public decimal Valor { get; set; }
-        public int Mes { get; set; }
-        public int Ano { get; set; }
-
-        public EnumTipoDespesa TipoDespesa { get; set; }
-
+        public string? ID { get; set; }
+        public string? Nome { get; set; }
         public DateTime DataCadastro { get; set; }
-
         public DateTime DataAlteracao { get; set; }
 
-        public DateTime DataPagamento { get; set; }
-
-        public DateTime DataVencimento { get; set; }
-
-        public bool Pago { get; set; }
-
-        public bool DespesaAntrasada { get; set; }
-
-        [ForeignKey("Perfil")]
-        [Column(Order = 1)]
-        public int IdPerfil { get; set; }
-        //public virtual Categoria Categoria { get; set; }
     }
 }

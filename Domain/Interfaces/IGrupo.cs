@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface IGrupo : InterfaceGeneric<Grupo>
+    public interface IGrupo
     {
-        Task<IList<Grupo>> ListarGrupos(string emailUsuario);
+        Task<IList<Grupo>> AdicionarGrupo(Grupo grupo);
 
-        Task<IList<Grupo>> AtualizarGrupo(string emailUsuario);
+        Task<IList<Grupo>> AlterarGrupo(Grupo grupo);
 
-        Task<IList<Grupo>> ObterGrupo(string emailUsuario);
+        Task<IList<Grupo>> ExcluirGrupo(Grupo grupo);
 
-        Task<IList<Grupo>> DeleteGrupo(string emailUsuario);
+        Task<IList<Grupo>> ObterGrupo(Grupo grupo);
     }
 }

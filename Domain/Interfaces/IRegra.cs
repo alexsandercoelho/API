@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface IGrupo : InterfaceGeneric<Despesa>
+    public interface IRegra
     {
-        Task<IList<Despesa>> ListarDespesasUsuario(string emailUsuario);
+        Task<IList<Regra>> AdicionarRegra(Regra regra);
 
-        Task<IList<Despesa>> ListarDespesasUsuarioNaoPagasMesesAnterior(string emailUsuario);
+        Task<IList<Regra>> AlterarRegra(Regra regra);
+
+        Task<IList<Regra>> ExcluirRegra(Regra regra);
+
+
     }
 }

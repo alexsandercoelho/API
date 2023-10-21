@@ -9,7 +9,11 @@ namespace Domain.Interfaces
 {
     public interface IPerfil
     {
-        Task AdicionarPerfil(Perfil perfil);
-        Task AtualizarPerfil(Perfil perfil);
+        Task<IList<Perfil>> AdicionarPerfil(Perfil perfil);
+
+        Task<IList<Perfil>> AlterarPerfil(Perfil perfil);
+
+        Task<IList<Perfil>> ExcluirPerfil(Perfil perfil);
+
     }
 }

@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface IVersao : InterfaceGeneric<Versao>
+    public interface IVersao 
     {
-        Task<IList<Versao>> ListarVersao(string emailUsuario);
+        Task<IList<Versao>> ListarVersao (Versao versao);
 
-        Task<IList<Versao>> AdicionarVersao(string emailUsuario);
+        Task<IList<Versao>> AlterarVersao(Versao versao);
 
-        Task<IList<Versao>> DeleteVersao(int id);
-
-        Task<IList<Versao>> ObterVersao(int id);
 
     }
 }
+
+

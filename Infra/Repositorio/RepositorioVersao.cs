@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace Infra.Repositorio
 {
-    public class RepositorioPerfil : RepositoryGenerics<Perfil>, IPerfil
+    public class RepositorioVersao : RepositoryGenerics<Versao>, IVersao
     {
         private readonly DbContextOptions<ContextBase> _OptionsBuilder;
 
-        public RepositorioPerfil()
+        public RepositorioVersao()
         {
             _OptionsBuilder = new DbContextOptions<ContextBase>();
         }
@@ -25,12 +25,6 @@ namespace Infra.Repositorio
         {
             using (var banco = new ContextBase(_OptionsBuilder))
             {
-                return await
-                    (from s in banco.Sistema
-                     join c in banco.Perfil on s.Id equals c.IdSistema
-                     join us in banco.UsuarioSistema on s.Id equals us.IdSistema
-                     where us.EmailUsuario.Equals(emailUsuario) && us.SistemaAtual
-                     select c).AsNoTracking().ToListAsync();
             }
         }
     }

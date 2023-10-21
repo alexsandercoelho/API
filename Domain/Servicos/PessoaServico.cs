@@ -8,27 +8,36 @@ using System.Threading.Tasks;
 
 namespace Domain.Servicos
 {
-    public class PerfilServico : IPerfil
+    public class PessoaServico : IPessoa
     {
-
-        private readonly IPerfil _interfacePerfil;
-        public PerfilServico(IPerfil interfacePerfil)
+        public Task<IList<Pessoa>> AdicionarPessoa(Pessoa pessoa)
         {
-            _interfacePerfil = interfacePerfil;
+            throw new NotImplementedException();
         }
 
-        public async Task AdicionarPerfil(Perfil perfil)
+        public Task<IList<Pessoa>> AlterarPessoa(Pessoa pessoa)
         {
-            var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
-            if (valido)
-                await _interfacePerfil.Add(perfil);
+            throw new NotImplementedException();
         }
 
-        public async Task AtualizarPerfil(Perfil perfil)
+        public Task<IList<Pessoa>> ExcluirPessoa(int id)
         {
-            var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
-            if (valido)
-                await _interfacePerfil.Update(perfil);
+            throw new NotImplementedException();
+        }
+
+        public Task ExcluirPessoa(Pessoa pessoa)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<Pessoa>> ListarPessoa(Pessoa pessoa)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<Pessoa>> ObterPerfil(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

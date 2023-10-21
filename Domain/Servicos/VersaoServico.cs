@@ -18,18 +18,19 @@ namespace Domain.Servicos
             _interfaceVersao = interfaceVersao;
         }
 
-        public async Task AdicionarVersao(Versao versao)
+        public async Task ListarVersao(Versao versao)
         {
             var valido = versao.ValidarPropriedadeString(versao.Nome, "Nome");
             if (valido)
                 await _interfaceVersao.Add(versao);
         }
 
-        public async Task AtualizarVersao(Versao versao)
+        public async Task AlterarVersao(Versao versao)
         {
             var valido = versao.ValidarPropriedadeString(versao.Nome, "Nome");
             if (valido)
-                await _interfaceVersao.Update(versao);
+                await _interfaceVersao.Add(versao);
         }
+
     }
 }

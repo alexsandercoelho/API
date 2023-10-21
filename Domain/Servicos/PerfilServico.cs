@@ -21,14 +21,21 @@ namespace Domain.Servicos
         {
             var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
             if (valido)
-                await _interfacePerfil.Add(perfil);
+                await _interfacePerfil.AdicionarPerfil(perfil);
         }
 
-        public async Task AtualizarPerfil(Perfil perfil)
+        public async Task AlterarPerfil(Perfil perfil)
         {
             var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
             if (valido)
-                await _interfacePerfil.Update(perfil);
+                await _interfacePerfil.AlterarPerfil(perfil);
+        }
+
+        public async Task ExcluirPerfil(Perfil perfil)
+        {
+            var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
+            if (valido)
+                await _interfacePerfil.ExcluirPerfil(perfil);
         }
     }
 }

@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace Domain.Servicos
 {
-    public class PerfilServico : IPerfil
+    public class GrupoServico : IGrupo
     {
 
-        private readonly IPerfil _interfacePerfil;
-        public PerfilServico(IPerfil interfacePerfil)
+        private readonly IGrupo _interfaceGrupo;
+        public GrupoServico(IGrupo interfaceGrupo)
         {
-            _interfacePerfil = interfacePerfil;
+            _interfaceGrupo = interfaceGrupo;
         }
 
-        public async Task AdicionarPerfil(Perfil perfil)
+        public async Task AdicionarGrupos(Grupo grupo)
         {
-            var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
+            var valido = grupo.ValidarPropriedadeString(grupo.Nome, "Nome");
             if (valido)
-                await _interfacePerfil.Add(perfil);
+                await _interfaceGrupo.AdicionarGrupo(grupo);
         }
 
-        public async Task AtualizarPerfil(Perfil perfil)
+        public async Task AlterarGrupo(Grupo grupo)
         {
-            var valido = perfil.ValidarPropriedadeString(perfil.Nome, "Nome");
+            var valido = grupo.ValidarPropriedadeString(grupo.Nome, "Nome");
             if (valido)
-                await _interfacePerfil.Update(perfil);
+                await _interfaceGrupo.AlterarGrupo(grupo);
         }
     }
 }

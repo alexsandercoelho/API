@@ -37,8 +37,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 builder.Services.AddSingleton(typeof(InterfaceGeneric<>), typeof(RepositoryGenerics<>));
 builder.Services.AddSingleton<IGrupo, RepositorioGrupo>();
 builder.Services.AddSingleton<IPerfil, RepositorioPerfil>();
-builder.Services.AddSingleton<InterfacePessoa, RepositorioPessoa>();
-builder.Services.AddSingleton<InterfaceRegra, RepositorioRegra>();
+builder.Services.AddSingleton<IPessoa, RepositorioPessoa>();
+builder.Services.AddSingleton<IRegra, RepositorioRegra>();
 builder.Services.AddSingleton<IVersao, RepositorioVersao>();
 
 
@@ -47,13 +47,12 @@ builder.Services.AddSingleton<InterfaceUsuarioSistema, RepositorioUsuarioSistema
 
 
 // SERVIÇO DOMINIO
-builder.Services.AddSingleton<IGrupoServico, GrupoServico>();
-builder.Services.AddSingleton<IPerfil, PerfilServico>();
-builder.Services.AddSingleton<IPessoaServico, PessoaServico>();
-builder.Services.AddSingleton<IRegraServico, RegraServico>();
-builder.Services.AddSingleton<IVersaoServico, VersaoServico>();
-builder.Services.AddSingleton<IDespesaServico, DespesaServico>();
-builder.Services.AddSingleton<ISistemaServico, SistemaServico>();
+builder.Services.AddSingleton<GrupoServico, GrupoServico>();
+builder.Services.AddSingleton<PerfilServico, PerfilServico>();
+builder.Services.AddSingleton<PessoaServico, PessoaServico>();
+builder.Services.AddSingleton<RegraServico, RegraServico>();
+builder.Services.AddSingleton<VersaoServico, VersaoServico>();
+builder.Services.AddSingleton<SistemaServico, SistemaServico>();
 builder.Services.AddSingleton<IUsuarioSistemaServico, UsuarioSistemaServico>();
 
 

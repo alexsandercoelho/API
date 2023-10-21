@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface IGrupo : InterfaceGeneric<Pessoa>
+    public interface IPessoa
     {
-        Task<IList<Pessoa>> ListarPessoa(string pessoa);
-        Task AdicionarPessoa(Pessoa pessoa);
+        Task<IList<Pessoa>> AdicionarPessoa(Pessoa pessoa);
 
-        Task AtualizarPessoa(Pessoa pessoa);
+        Task<IList<Pessoa>> AlterarPessoa(Pessoa pessoa);
 
-        Task<IList<Pessoa>> ObterPessoa(int id);
+        Task<IList<Pessoa>> ExcluirPessoa(int id);
 
-        Task DeletePessoa(int id);
-
+        Task<IList<Pessoa>> ObterPerfil(int id);
     }
 
 

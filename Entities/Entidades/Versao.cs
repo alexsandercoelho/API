@@ -10,30 +10,21 @@ namespace Entities.Entidades
 {
 
     [Table("Versao")]
-    public  class Versao : Base
+    public  class Versao
     {
+        public string? ID { get; set; }
+        public string? Nome { get; set; }
+        public string? VersaoCor { get; set; }
 
-        public decimal Valor { get; set; }
-        public int Mes { get; set; }
-        public int Ano { get; set; }
+        public string? VersaoMin { get; set; }
 
-        public EnumTipoDespesa TipoDespesa { get; set; }
-
+        public string? VersaoMinCont { get; set; }
+        
         public DateTime DataCadastro { get; set; }
 
-        public DateTime DataAlteracao { get; set; }
-
-        public DateTime DataPagamento { get; set; }
-
-        public DateTime DataVencimento { get; set; }
-
-        public bool Pago { get; set; }
-
-        public bool DespesaAntrasada { get; set; }
-
-        [ForeignKey("Perfil")]
-        [Column(Order = 1)]
-        public int IdPerfil { get; set; }
+        //[ForeignKey("Perfil")]
+        //[Column(Order = 1)]
+       // public int IdPerfil { get; set; }
         //public virtual Categoria Categoria { get; set; }
     }
 }

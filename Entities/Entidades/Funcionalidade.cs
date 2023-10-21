@@ -10,7 +10,7 @@ namespace Entities.Entidades
 {
 
     [Table("Funcionalidade")]
-    public  class Funcionalidade : Base
+    public  class Funcionalidade
     {
 
         public int Nome { get; set; }
