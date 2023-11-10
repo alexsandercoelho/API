@@ -1,5 +1,4 @@
-﻿using Entities.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -15,7 +14,7 @@ namespace Entities.Entidades
 
         public int Nome { get; set; }
         
-        public EnumTipoDespesa TipoDespesa { get; set; }
+       // public EnumTipoDespesa TipoDespesa { get; set; }
 
         public DateTime DataCadastro { get; set; }
 
