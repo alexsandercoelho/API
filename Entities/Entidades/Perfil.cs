@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Entidades
 {
-
-    [Table("Perfil")]
     public class Perfil : Base
     {
-        [ForeignKey("Sistema")]
-        [Column(Order = 1)]
-        public int IdSistema { get; set; }
-       // public virtual Sistema Sistema { get; set; }
+        public DateTime DataInclusao { get; set; }
+        public DateTime DataAtualizacao { get; set; }
+        public virtual IList<Funcionalidade> Funcionalidades { get; set; }
     }
 }

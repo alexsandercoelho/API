@@ -5,9 +5,9 @@ using Infra.Repositorio.Generics;
 
 namespace Infra.Repositorio
 {
-    public class RepositorioPerfil : Repository<Perfil>, IPerfilRepository
+    public class PessoaRepository : Repository<Pessoa>, IPessoaRepository
     {
-        public RepositorioPerfil(ContextBase context) : base(context){ }
+        public PessoaRepository(ContextBase context) : base(context) { }
 
     }
 }

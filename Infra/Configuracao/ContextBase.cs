@@ -18,10 +18,11 @@ namespace Infra.Configuracao
             _configuration = configuration; 
         }
 
-        public DbSet<Sistema> Sistema { set; get; }
-        public DbSet<UsuarioSistema> UsuarioSistema { set; get; }
         public DbSet<Perfil> Perfil { set; get; }
-        public DbSet<Despesa> Despesa { set; get; }
+        public DbSet<RegrasDistribuicao> RegrasDistribuicao { set; get; }
+        public DbSet<GrupoDistribuicao> GrupoDistribuicao { set; get; }
+        public DbSet<Funcionalidade> Funcionalidade { set; get; }
+        public DbSet<Pessoa> Pessoa { set; get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -29,8 +29,7 @@ namespace WebApi.Controllers
         [Route("new")]
         [SwaggerOperation(Summary = "Etapa de Entrada", Description = "Etapa de entrada")]
         [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(IActionResult), Description = "Ok-200")]
-
-        public async Task<IActionResult> AdicionaUsuario([FromBody] Login login)
+        public async Task<IActionResult> Add([FromBody] Login login)
         {
             if (string.IsNullOrWhiteSpace(login.email) ||
                 string.IsNullOrWhiteSpace(login.senha) ||
@@ -70,8 +69,6 @@ namespace WebApi.Controllers
             {
                 return Ok("erro ao confirmar cadastro de usuário!");
             }
-
         }
-
     }
 }

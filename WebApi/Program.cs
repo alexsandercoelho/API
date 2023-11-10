@@ -1,22 +1,14 @@
-using DocumentFormat.OpenXml.EMMA;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Domain.Interfaces.Generics;
-using Domain.Interfaces.IDespesa;
-using Domain.Interfaces.InterfaceServicos;
-using Domain.Interfaces.IPerfil;
-using Domain.Interfaces.ISistema;
-using Domain.Interfaces.IUsuarioSistema;
-using Domain.Servicos;
 using Entities.Entidades;
 using Infra.Configuracao;
 using Infra.Repositorio;
 using Infra.Repositorio.Generics;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
+using Services.Interfaces;
+using Services.Services;
 using WebApi.Token;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,57 +31,55 @@ builder.Services.AddDbContext<ContextBase>(options =>
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ContextBase>();
 
-
-
 // INTERFACE E REPOSITORIO
-builder.Services.AddSingleton(typeof(IInterfaceGeneric<>), typeof(RepositoryGenerics<>));
-builder.Services.AddSingleton<InterfacePerfil, RepositorioPerfil>();
-builder.Services.AddSingleton<InterfaceDespesa, RepositorioDespesa>();
-builder.Services.AddSingleton<InterfaceSistema, RepositorioSistema>();
-builder.Services.AddSingleton<InterfaceUsuarioSistema, RepositorioUsuarioSistema>();
-
+builder.Services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddSingleton<IPerfilRepository, RepositorioPerfil>();
+builder.Services.AddSingleton<IPessoaRepository, PessoaRepository>();
+builder.Services.AddSingleton<IFuncionalidadeRepository, FuncionalidadeRepository>();
+builder.Services.AddSingleton<IRegrasDistribuicaoRepository, RegrasDistribuicaoRepository>();
+builder.Services.AddSingleton<IGrupoDistribuicaoRepository, GrupoDistribuicaoRepository>();
 
 // SERVIÇO DOMINIO
-builder.Services.AddSingleton<IPerfilServico, PerfilServico>();
-builder.Services.AddSingleton<IDespesaServico, DespesaServico>();
-builder.Services.AddSingleton<ISistemaServico, SistemaServico>();
-builder.Services.AddSingleton<IUsuarioSistemaServico, UsuarioSistemaServico>();
+builder.Services.AddSingleton<IPerfilService, PerfilService>();
+builder.Services.AddSingleton<IPessoasService, PessoaService>();
+builder.Services.AddSingleton<IFuncionalidadeService, FuncionalidadeService>();
+builder.Services.AddSingleton<IGrupoDistribuicaoService, GrupoDistribuicaoService>();
+builder.Services.AddSingleton<IRegrasDistribuicaoService, RegrasDistribuicaoService>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-             .AddJwtBearer(option =>
-             {
-                 option.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuer = false,
-                     ValidateAudience = false,
-                     ValidateLifetime = true,
-                     ValidateIssuerSigningKey = true,
+    .AddJwtBearer(option =>
+    {
+        option.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
 
-                     ValidIssuer = "Teste.Securiry.Bearer",
-                     ValidAudience = "Teste.Securiry.Bearer",
-                     IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
-                 };
+            ValidIssuer = "Teste.Securiry.Bearer",
+            ValidAudience = "Teste.Securiry.Bearer",
+            IssuerSigningKey = JwtSecurityKey.Create("Secret_Key-12345678")
+        };
 
-                 option.Events = new JwtBearerEvents
-                 {
-                     OnAuthenticationFailed = context =>
-                     {
-                         Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
-                         return Task.CompletedTask;
-                     },
-                     OnTokenValidated = context =>
-                     {
-                         Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
-                         return Task.CompletedTask;
-                     }
-                 };
-             });
+        option.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+                return Task.CompletedTask;
+            },
+            OnTokenValidated = context =>
+            {
+                Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+                return Task.CompletedTask;
+            }
+        };
+    });
 
 
 builder.Services.AddSwaggerGen(c =>
 {
-    // Include 'SecurityScheme' to use JWT Authentication
     var jwtSecurityScheme = new OpenApiSecurityScheme
     {
         BearerFormat = "JWT",
@@ -117,7 +107,6 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -136,7 +125,6 @@ x.AllowAnyOrigin()
 
 app.UseHttpsRedirection();
 
-//New
 app.UseAuthentication();
 app.UseAuthorization();
 
