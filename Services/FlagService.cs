@@ -85,9 +85,9 @@ public class FlagService : IFlagService
             throw new NotFoundException("The record doesn't exist.");
 
         var entity = await _unitOfWork.FlagRepository.GetByIdAsync(id, new List<string> { "EarlyBird", "Changes" });
-        var permissionDto = _mapper.Map<FlagDto>(entity);
+        var dto = _mapper.Map<FlagDto>(entity);
 
-        return permissionDto;
+        return dto;
     }
 
 }

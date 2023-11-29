@@ -79,9 +79,9 @@ public class ChangesService : IChangesService
             throw new NotFoundException("The record doesn't exist.");
 
         var entity = await _unitOfWork.ChangesRepository.GetByIdAsync(id, new List<string> { "Flag" });
-        var permissionDto = _mapper.Map<ChangesDto>(entity);
+        var dto = _mapper.Map<ChangesDto>(entity);
 
-        return permissionDto;
+        return dto;
     }
 
 }

@@ -80,9 +80,9 @@ public class PersonService : IPersonService
             throw new NotFoundException("The record doesn't exist.");
 
         var entity = await _unitOfWork.PersonRepository.GetByIdAsync(id, new List<string> { "Profile" });
-        var permissionDto = _mapper.Map<PersonDto>(entity);
+        var dto = _mapper.Map<PersonDto>(entity);
 
-        return permissionDto;
+        return dto;
     }
 
 }

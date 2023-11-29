@@ -12,6 +12,8 @@ public class UnitOfWork : IUnitOfWork
     public IFeatureRepository FeatureRepository { get; set; }
     public IEarlyBirdRepository EarlyBirdRepository { get; set; }
     public IChangesRepository ChangesRepository { get; set; }
+    public IDistributionGroupRepository DistributionGroupRepository { get; set; }
+    public IDistributionRulesRepository DistributionRulesRepository { get; set; }
 
     private readonly SqlDbContext _context;
 
@@ -21,7 +23,10 @@ public class UnitOfWork : IUnitOfWork
                       IFlagRepository flagRepository, 
                       IFeatureRepository featureRepository, 
                       IEarlyBirdRepository earlyBirdRepository, 
-                      IChangesRepository changesRepository)
+                      IChangesRepository changesRepository,
+                      IDistributionGroupRepository distributionGroupRepository,
+                      IDistributionRulesRepository distributionRulesRepository
+                      )
     {
         PersonRepository = personRepository;
         ProfilesRepository = profilesRepository;
@@ -29,6 +34,9 @@ public class UnitOfWork : IUnitOfWork
         FeatureRepository = featureRepository;
         EarlyBirdRepository = earlyBirdRepository;
         ChangesRepository = changesRepository;
+        DistributionGroupRepository = distributionGroupRepository;
+        DistributionRulesRepository = distributionRulesRepository;
+
         _context = context;
     }
 

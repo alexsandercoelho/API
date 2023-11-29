@@ -85,9 +85,8 @@ public class ProfilesService : IProfilesService
             throw new NotFoundException("The record doesn't exist.");
 
         var entity = await _unitOfWork.ProfilesRepository.GetByIdAsync(id, new List<string> { "Person", "Feature" });
-        var permissionDto = _mapper.Map<ProfilesDto>(entity);
+        var dto = _mapper.Map<ProfilesDto>(entity);
 
-        return permissionDto;
+        return dto;
     }
-
 }

@@ -10,5 +10,7 @@ public interface IUnitOfWork : IDisposable
     IFeatureRepository FeatureRepository { get; set; }
     IEarlyBirdRepository EarlyBirdRepository { get; set; }
     IChangesRepository ChangesRepository { get; set; }
+    IDistributionGroupRepository DistributionGroupRepository { get; set; }
+    IDistributionRulesRepository DistributionRulesRepository { get; set; }
     Task<int> SaveAsync();
 }

@@ -79,9 +79,9 @@ public class FeatureService : IFeatureService
             throw new NotFoundException("The record doesn't exist.");
 
         var entity = await _unitOfWork.FeatureRepository.GetByIdAsync(id, new List<string> { "Profile" });
-        var permissionDto = _mapper.Map<FeatureDto>(entity);
+        var dto = _mapper.Map<FeatureDto>(entity);
 
-        return permissionDto;
+        return dto;
     }
 
 }

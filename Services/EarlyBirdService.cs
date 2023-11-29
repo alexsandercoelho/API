@@ -79,9 +79,9 @@ public class EarlyBirdService : IEarlyBirdService
             throw new NotFoundException("The record doesn't exist.");
 
         var entity = await _unitOfWork.EarlyBirdRepository.GetByIdAsync(id, new List<string> { "Flag" });
-        var permissionDto = _mapper.Map<EarlyBirdDto>(entity);
+        var dto = _mapper.Map<EarlyBirdDto>(entity);
 
-        return permissionDto;
+        return dto;
     }
 
 }

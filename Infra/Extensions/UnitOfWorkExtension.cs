@@ -21,7 +21,9 @@ public static class UnitOfWorkExtension
                 new FlagRepository(context.Flags),
                 new FeatureRepository(context.Features),
                 new EarlyBirdRepository(context.EarlyBirds),
-                new ChangesRepository(context.Changes)
+                new ChangesRepository(context.Changes),
+                new DistributionGroupRepository(context.DistributionGroup),
+                new DistributionRulesRepository(context.DistributionRules)
             );
         });
         return serviceCollection;

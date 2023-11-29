@@ -16,6 +16,8 @@ public class SqlDbContext : DbContext
     public DbSet<Feature> Features { get; set; }
     public DbSet<EarlyBird> EarlyBirds { get; set; }
     public DbSet<Changes> Changes { get; set; }
+    public DbSet<DistributionGroup> DistributionGroup { get; set; }
+    public DbSet<DistributionRules> DistributionRules { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -26,6 +28,8 @@ public class SqlDbContext : DbContext
         modelBuilder.ApplyConfiguration(new FeatureConfiguration());
         modelBuilder.ApplyConfiguration(new EarlyBirdConfiguration());
         modelBuilder.ApplyConfiguration(new ChangesConfiguration());
+        modelBuilder.ApplyConfiguration(new DistributionGroupConfiguration());
+        modelBuilder.ApplyConfiguration(new DistributionRulesConfiguration());
 
         modelBuilder.Seed();
     }
