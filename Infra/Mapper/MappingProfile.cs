@@ -14,5 +14,8 @@ public class MappingProfile : Profile
         CreateMap<FeatureDto, Feature>().ReverseMap();
         CreateMap<EarlyBirdDto, EarlyBird>().ReverseMap();
         CreateMap<ChangesDto, Changes>().ReverseMap();
+        CreateMap<DistributionGroupDto, DistributionGroup>().ReverseMap();
+        CreateMap<DistributionRulesDto, DistributionRules>().ReverseMap();
+        CreateMap<FuncionalityDto, Funcionality>().ReverseMap();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Domain;
 using Domain.Repositories;
 using Infra.Database;
+using Infra.Repositories;
 
 namespace Infra;
 
@@ -14,6 +15,7 @@ public class UnitOfWork : IUnitOfWork
     public IChangesRepository ChangesRepository { get; set; }
     public IDistributionGroupRepository DistributionGroupRepository { get; set; }
     public IDistributionRulesRepository DistributionRulesRepository { get; set; }
+    public IFuncionalityRepository FuncionalityRepository { get; set; }
 
     private readonly SqlDbContext _context;
 
@@ -25,8 +27,8 @@ public class UnitOfWork : IUnitOfWork
                       IEarlyBirdRepository earlyBirdRepository, 
                       IChangesRepository changesRepository,
                       IDistributionGroupRepository distributionGroupRepository,
-                      IDistributionRulesRepository distributionRulesRepository
-                      )
+                      IDistributionRulesRepository distributionRulesRepository,
+                      IFuncionalityRepository funcionalityRepository)
     {
         PersonRepository = personRepository;
         ProfilesRepository = profilesRepository;
@@ -36,6 +38,7 @@ public class UnitOfWork : IUnitOfWork
         ChangesRepository = changesRepository;
         DistributionGroupRepository = distributionGroupRepository;
         DistributionRulesRepository = distributionRulesRepository;
+        FuncionalityRepository = funcionalityRepository;
 
         _context = context;
     }

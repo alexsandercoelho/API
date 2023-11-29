@@ -18,6 +18,7 @@ public class SqlDbContext : DbContext
     public DbSet<Changes> Changes { get; set; }
     public DbSet<DistributionGroup> DistributionGroup { get; set; }
     public DbSet<DistributionRules> DistributionRules { get; set; }
+    public DbSet<Funcionality> Funcionalities { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -30,6 +31,7 @@ public class SqlDbContext : DbContext
         modelBuilder.ApplyConfiguration(new ChangesConfiguration());
         modelBuilder.ApplyConfiguration(new DistributionGroupConfiguration());
         modelBuilder.ApplyConfiguration(new DistributionRulesConfiguration());
+        modelBuilder.ApplyConfiguration(new FuncionalityConfiguration());
 
         modelBuilder.Seed();
     }

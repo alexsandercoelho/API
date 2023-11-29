@@ -23,7 +23,8 @@ public static class UnitOfWorkExtension
                 new EarlyBirdRepository(context.EarlyBirds),
                 new ChangesRepository(context.Changes),
                 new DistributionGroupRepository(context.DistributionGroup),
-                new DistributionRulesRepository(context.DistributionRules)
+                new DistributionRulesRepository(context.DistributionRules),
+                new FuncionalityRepository(context.Funcionalities)
             );
         });
         return serviceCollection;

@@ -12,5 +12,6 @@ public interface IUnitOfWork : IDisposable
     IChangesRepository ChangesRepository { get; set; }
     IDistributionGroupRepository DistributionGroupRepository { get; set; }
     IDistributionRulesRepository DistributionRulesRepository { get; set; }
+    IFuncionalityRepository FuncionalityRepository { get; set; }
     Task<int> SaveAsync();
 }
